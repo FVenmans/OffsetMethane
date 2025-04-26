@@ -7,7 +7,7 @@ cd(fileparts(mfilename('fullpath')))
 RCP(2:8,:)=RCP(2:8,:)/1000; % convert Mt into GtCO2
 [J,txt_J,Table_J] = xlsread('decay and inertia parameters.xlsx',1,'A1:H19','basic');
 [G,txt_G,Table_G] = xlsread('decay and inertia parameters.xlsx',3,'A2:G20','basic');
-[CONC] = xlsread('iamc_db_CO2ppm.xlsx',1,'F1:P8','basic');
+%[CONC] = xlsread('iamc_db_CO2ppm.xlsx',1,'F1:P8','basic');
 [TEMP] = xlsread('iamc_db_Temp.xlsx',1,'F1:P8','basic');
 [F_TOT] = xlsread('iamc_db_TotalF.xlsx',1,'F1:P8','basic');
 [F_CO2] = xlsread('iamc_db_CO2F.xlsx',1,'F1:P8','basic');
