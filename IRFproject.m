@@ -1,7 +1,7 @@
 %Graphs for a CMIP5 emission scearios corresponding to RCP's
 %ppm and GtC is converted to GtCO2 (above steadystate) unless indicated by the name of the matrix
 close all; clear;
-cd 'C:\Users\VENMANSF\OneDrive - London School of Economics\Research projects\Offsets Methane';
+cd(fileparts(mfilename('fullpath')))
 %load data
 [RCP,txt_RCP,Table_RCP] = xlsread('iamc_db_Emissions.xlsx',1,'E1:O8','basic'); % does not work without 'basic'
 RCP(2:8,:)=RCP(2:8,:)/1000; % convert Mt into GtCO2
@@ -142,8 +142,8 @@ T_deciles_offset=CarbonPerMethane.*T_deciles;
 T_JoosGeof_offset=CarbonPerMethane*T_JoosGeofbestfit_diff(scenario,:);
 T_Methane=[zeros(1,5) IRFMethane(1:81)'];
 %Damages    
-kappa=0.0077; % output loss for 1°C
-gamma=2*kappa; %total damages=exp(-gamma/2^*T²)
+kappa=0.0077; % output loss for 1Â°C
+gamma=2*kappa; %total damages=exp(-gamma/2^*TÂ²)
 Damage_FAIR=gamma.*T_FAIR(scenario,:).*T_FAIR_offset;
 Damage_Methane=gamma.*T_FAIR(scenario,:).*T_Methane;
 discount=0.03-0.02; %r-g to account for damages being proportional to production
@@ -172,7 +172,7 @@ figure()
     lgd=legend([ar p1 p2 p3 p4],'Deciles Joos-Geoffroy combinations','Best fit Joos-Geoffroy ensemble','FAIR','Methane','Net Effect','Location','SouthEast');
     lgd.FontSize=8;
     xlabel('years')
-    ylabel('Effect on Temperature (°C)')
+    ylabel('Effect on Temperature (Â°C)')
     axis([2015 2100 -inf inf]);
     pbaspect([3 1 1])
     orient landscape
